@@ -1,0 +1,96 @@
+<!-- layout.html -->
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Blog{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex flex-col min-h-screen bg-gray-100 text-gray-900">
+    <nav class="bg-white shadow-md p-4">
+        <div class="max-w-6xl mx-auto flex items-center justify-between">
+          <a href="/" class="text-2xl font-bold text-blue-600">Nedu' Blog</a>
+      
+          <!-- Hamburger Icon (Mobile) -->
+          <button id="menu-btn" class="lg:hidden text-blue-600 focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                 viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+      
+          <!-- Menu Links -->
+          <!-- Menu Links -->
+<div id="menu" class="hidden lg:flex flex-col lg:flex-row items-start lg:items-center absolute lg:static bg-white lg:bg-transparent shadow-lg lg:shadow-none p-4 lg:p-0 top-16 left-0 w-full lg:w-auto transition-all z-50 space-y-3 lg:space-y-0 lg:space-x-6 text-base font-medium">
+    {% if user.is_authenticated %}
+      <a href="{% url 'posts:home' %}" class="text-blue-700 hover:bg-blue-100 px-3 py-2 rounded transition">All Posts</a>
+      <a href="{% url 'posts:create' %}" class="text-blue-700 hover:bg-blue-100 px-3 py-2 rounded transition">Add New Post</a>
+      <a href="{% url 'posts:draft_posts' %}" class="text-blue-700 hover:bg-blue-100 px-3 py-2 rounded transition">Dashboard</a>
+      <form action="{% url 'user:logout' %}" method="post" class="inline">
+        {% csrf_token %}
+        <button type="submit" class="text-red-600 hover:bg-red-100 px-3 py-2 rounded transition">Logout</button>
+      </form>
+    {% else %}
+      <a href="{% url 'user:login' %}" class="text-blue-700 hover:bg-blue-100 px-3 py-2 rounded transition">Login</a>
+      <a href="{% url 'user:user_register' %}" class="text-green-700 hover:bg-green-100 px-3 py-2 rounded transition">Register</a>
+    {% endif %}
+  </div>
+  
+        </div>
+      </nav>
+
+    <main class="max-w-6xl mx-auto px-4 flex-grow">
+        {% block content %}{% endblock %}
+    </main>
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-10 mt-auto">
+        <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-3 gap-8">
+            <!-- About -->
+            <div>
+                <h4 class="text-xl font-semibold mb-3">MyBlog</h4>
+                <p class="text-gray-400 text-sm">A community-driven platform where your thoughts matter. Share ideas, grow your audience, and discover stories from every walk of life.</p>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h4 class="text-xl font-semibold mb-3">Quick Links</h4>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="{% url 'user:login' %}" class="hover:text-white">Login</a></li>
+                    <li><a href="{% url 'user:user_register' %}" class="hover:text-white">Register</a></li>
+                    <li><a href="#" class="hover:text-white">Privacy Policy</a></li>
+                    <li><a href="#" class="hover:text-white">Terms of Service</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact / Social -->
+            <div>
+                <h4 class="text-xl font-semibold mb-3">Connect</h4>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li>Email: <a href="mailto:support@myblog.com" class="hover:text-white">support@myblog.com</a></li>
+                    <li class="flex space-x-4 mt-2">
+                        <a href="#" class="hover:text-blue-400">🐦 Twitter</a>
+                        <a href="#" class="hover:text-blue-600">📘 Facebook</a>
+                        <a href="#" class="hover:text-pink-400">📸 Instagram</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="text-center text-gray-500 text-sm mt-10 border-t border-gray-700 pt-6">
+            &copy; {{ now|date:"Y" }} MyBlog. All rights reserved. <br>
+            <span class="flex justify-center items-center space-x-2 mt-2">
+                <span>Created by <strong>Nedu</strong> with</span>
+                <img src="https://www.svgrepo.com/show/373669/html.svg" alt="HTML" class="h-5" title="HTML">
+                <img src="https://www.svgrepo.com/show/374118/tailwind.svg" alt="TailwindCSS" class="h-5" title="Tailwind CSS">
+                <img src="https://www.djangoproject.com/m/img/logos/django-logo-positive.svg" alt="Django" class="h-5" title="Django">
+            </span>
+        </div>
+    </footer>
+<script src="{% static 'js/scripts.js' %}"></script>
+
+</body>
+</html>
+

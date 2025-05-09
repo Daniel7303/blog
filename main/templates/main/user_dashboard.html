@@ -1,0 +1,15 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h2>Your Draft Posts</h2>
+
+{% for post in drafts %}
+<img src="{{ post.banner.url }}" alt="{{ post.title }}" class="w-full h-64 object-cover">
+    <h3>{{ post.title }}</h3>
+    <p>{{ post.created_at }}</p>
+    <a href="{% url 'posts:edit_posts' slug=post.slug %}">Edit</a>
+{% empty %}
+    <p>You have no draft posts.</p>
+{% endfor %}
+
+{% endblock %}

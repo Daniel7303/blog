@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h2>Posts in category: {{ request.resolver_match.kwargs.category }}</h2>
+
+{% for post in posts %}
+  <a href="{% url 'posts:detail' slug=post.slug %}">
+    <h3>{{ post.title }}</h3>
+    <p>{{ post.content }}</p>
+  </a>
+{% empty %}
+  <p>No posts found in this category.</p>
+{% endfor %}
+
+<hr>
+<h4>Other Categories</h4>
+<ul>
+  {% for category in categories %}
+    <li><a href="{% url 'posts:category' category %}">{{ category }}</a></li>
+  {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,103 @@
+{% extends "layout.html" %}
+
+{% block title %}Welcome to MyBlog{% endblock %}
+
+{% block content %}
+
+<!-- Include AOS (in layout.html head if needed) -->
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    AOS.init();
+  });
+</script>
+
+<!-- Hero Section -->
+<section class="relative bg-gray-900 text-white h-[90vh] flex items-center justify-center">
+    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d" ... 
+
+         alt="Blog Background" 
+         class="absolute inset-0 w-full h-full object-cover opacity-40">
+    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+    
+    <div class="relative z-10 text-center px-6 max-w-3xl" data-aos="fade-up">
+        <h1 class="text-5xl font-extrabold mb-6">Welcome to MyBlog</h1>
+        <p class="text-xl mb-8">Where your voice finds its audience.</p>
+        {% if user.is_authenticated %}
+        <p></p>
+        {% else %}
+        <div class="space-x-4">
+            <a href="{% url 'user:user_register' %}" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md text-lg">Get Started</a>
+            <a href="{% url 'user:login' %}" class="bg-white text-blue-600 px-6 py-3 rounded-md text-lg hover:bg-gray-100">Log In</a>
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+<!-- Icon Grid Feature Section -->
+<section class="py-20 bg-white">
+    <div class="max-w-6xl mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center text-gray-800 mb-12" data-aos="fade-up">What You Can Do on MyBlog</h2>
+        <div class="grid md:grid-cols-4 gap-10 text-center">
+            <div data-aos="fade-up" data-aos-delay="100">
+                <div class="text-4xl mb-3 text-blue-600">✍️</div>
+                <h3 class="text-xl font-semibold">Write</h3>
+                <p class="text-gray-600 mt-2">Create engaging posts with our distraction-free editor.</p>
+            </div>
+            <div data-aos="fade-up" data-aos-delay="200">
+                <div class="text-4xl mb-3 text-green-500">📢</div>
+                <h3 class="text-xl font-semibold">Share</h3>
+                <p class="text-gray-600 mt-2">Publish and share your voice with the world instantly.</p>
+            </div>
+            <div data-aos="fade-up" data-aos-delay="300">
+                <div class="text-4xl mb-3 text-purple-600">👥</div>
+                <h3 class="text-xl font-semibold">Connect</h3>
+                <p class="text-gray-600 mt-2">Join a growing community of readers and thinkers.</p>
+            </div>
+            <div data-aos="fade-up" data-aos-delay="400">
+                <div class="text-4xl mb-3 text-yellow-500">📈</div>
+                <h3 class="text-xl font-semibold">Grow</h3>
+                <p class="text-gray-600 mt-2">Track engagement and build your personal brand.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section class="bg-gray-100 py-20" id="testimonials">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+        <h2 class="text-3xl font-bold text-gray-800 mb-12" data-aos="fade-up">What Our Writers Say</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-white p-6 rounded shadow" data-aos="fade-up" data-aos-delay="100">
+                <p class="italic text-gray-700">“MyBlog gave me confidence to write again.”</p>
+                <p class="mt-4 font-semibold text-blue-600">— Amina</p>
+            </div>
+            <div class="bg-white p-6 rounded shadow" data-aos="fade-up" data-aos-delay="200">
+                <p class="italic text-gray-700">“It’s clean, easy, and powerful for creators.”</p>
+                <p class="mt-4 font-semibold text-blue-600">— David</p>
+            </div>
+            <div class="bg-white p-6 rounded shadow" data-aos="fade-up" data-aos-delay="300">
+                <p class="italic text-gray-700">“I found a writing community I didn’t know I needed.”</p>
+                <p class="mt-4 font-semibold text-blue-600">— Nkechi</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Newsletter -->
+<section class="bg-blue-600 py-20 text-white">
+    <div class="max-w-xl mx-auto text-center px-4" data-aos="fade-up">
+        <h2 class="text-3xl font-bold mb-4">Join Our Mailing List</h2>
+        <p class="mb-6">Get writing tips and community updates.</p>
+        <form action="#" method="post" class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <input type="email" name="email" placeholder="Enter your email"
+                   class="px-4 py-2 w-full sm:w-auto rounded text-black focus:outline-none" required>
+            <button class="bg-white text-blue-600 px-6 py-2 rounded hover:bg-gray-100">Subscribe</button>
+        </form>
+    </div>
+</section>
+
+
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block title %}
+User Login
+{% endblock title %}
+
+{% block content %}
+<div class="max-w-md mx-auto mt-10 bg-white p-8 rounded shadow mb-5">
+    <h1 class="text-2xl font-bold text-center mb-6">Login</h1>
+    <form action="/user/login/" method="post" class="space-y-4">
+        {% csrf_token %}
+        {{ form.as_p }}
+        
+        {% if request.GET.next %}
+            <input type="hidden" name="next" value="{{ request.GET.next }}">
+        {% endif %}
+        
+        <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition">
+            Submit
+        </button>
+    </form>
+</div>
+{% endblock %}
