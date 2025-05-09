@@ -10,7 +10,3 @@ env/
 
 # VS Code
 .vscode/
-
-# # Django static/media (if needed)
-# media/
-# staticfiles/
