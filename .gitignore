@@ -5,8 +5,28 @@ __pycache__/
 
 # Environment
 .env
+.env.*
 .venv/
 env/
 
 # VS Code
 .vscode/
+
+# Django
+staticfiles/
+media/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Migrations (optional to ignore, but useful to keep if shared)
+# */migrations/__pycache__/
+# */migrations/*.pyc
+
+# Python Bytecode
+*.pyo
+*.pyd

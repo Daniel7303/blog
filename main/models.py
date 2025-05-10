@@ -10,7 +10,7 @@ class Post(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(null=True, blank=True)
     category = models.CharField(max_length=50, default='General')
-    banner = models.ImageField(default='media/My Snapshot.jpg', null=True, blank=True)
+    banner = models.ImageField(upload_to='banners/', null=True, blank=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
     likes = models.ManyToManyField(User, related_name='liked_post', blank=True)
     is_draft = models.BooleanField(default=False)

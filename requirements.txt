@@ -57,3 +57,5 @@ uvicorn==0.34.2
 virtualenv==20.26.3
 Werkzeug==3.0.3
 whitenoise==6.9.0
+cloudinary==1.40.0
+django-cloudinary-storage==0.3.0
